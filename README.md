@@ -1,5 +1,19 @@
 # Catspace
 
+Welcome to Catspace! A place where cats can have their own social media platform. Think about Myspace but for cats!
+
+This project was built for the sole purpose of getting more familiar with the Angular Frameworks. 
+
+I'll be continuing to add more and more to this project as time goes one.
+
+Enjoy!
+
+Megan Krenbrink
+
+<br>
+
+# Asides
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
 
 ## Development server
