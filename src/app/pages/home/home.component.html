@@ -1,15 +1,42 @@
-<div class="h-full">
-  <div class="hero-image">
-    <div class="hero-content rounded-lg py-12 px-28">
-      <h1>Welcome to Catspace!</h1>
-      <h3>A place run by cats, <em>for cats.</em> Upload and share your picture with others and make new friends.</h3>
-      <button>Create Account</button>
+<section class="hero-image">
+  <div class="hero-content rounded-lg p-16 max-w-2xl">
+    <h1>Welcome to Catspace!</h1>
+    <h3 class="pb-4">
+      A place run by cats, <em>for cats.</em> Upload and share your picture with
+      others and make new friends.
+    </h3>
+    <primary-button
+      (btnClick)="clickHandler()"
+      text="Create Account"
+      title="Create Account"
+    ></primary-button>
+  </div>
+</section>
+<section class="flex justify-between items-center py-32 max-w-6xl m-auto">
+  <div class="basis-1/2 px-8">
+    <img src="../../../assets/images/cats-1.png" alt="Cats" />
+  </div>
+  <div class="basis-1/2 px-8">
+    <h2 class="pb-4">Lorem Ipsum</h2>
+    <p class="pb-4">
+      Lorem ipsum dolor sit amet. Quo voluptates consectetur ut assumenda sint
+      nam omnis dignissimos et numquam nisi. Quo deserunt autem eum aliquid
+      consectetur et accusamus architecto nam quia natus aut repudiandae quis
+      qui explicabo fugiat a architecto cumque.
+    </p>
+    <primary-button text="Read More" title="Read More"></primary-button>
+  </div>
+</section>
+<section class="flex flex-col py-32 max-w-6xl m-auto">
+  <div>
+    <h2 class="pb-4">Featured Profiles</h2>
+    <!-- TODO: Add shared ui card component -->
+    <div class="flex justify-between pb-4">
+      <div class="w-64 h-48 rounded-md bg-beige mr-4"></div>
+      <div class="w-64 h-48 rounded-md bg-beige mx-4"></div>
+      <div class="w-64 h-48 rounded-md bg-beige mx-4"></div>
+      <div class="w-64 h-48 rounded-md bg-beige ml-4"></div>
     </div>
+    <a class="mt-4">Explore more profiles</a>
   </div>
-  <div>
-    <h2>about</h2>
-  </div>
-  <div>
-    <h2>featured</h2>
-  </div>
-</div>
+</section>

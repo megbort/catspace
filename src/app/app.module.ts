@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ButtonComponent } from './components/button/button.component';
+import { FeaturedComponent } from './pages/featured/featured.component';
+import { FactsComponent } from './pages/facts/facts.component';
 
 @NgModule({
   imports: [
@@ -18,7 +21,10 @@ import { HomeComponent } from './pages/home/home.component';
     AppComponent,
     MenuComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    ButtonComponent,
+    FeaturedComponent,
+    FactsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

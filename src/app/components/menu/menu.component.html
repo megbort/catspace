@@ -1,14 +1,26 @@
 <div class="bg-beige flex justify-between items-center h-28 px-8">
-  <div class="flex items-center">
+  <div
+    class="flex items-center hover:cursor-pointer"
+    routerLink="/home"
+    title="Home"
+  >
     <span class="material-icons mr-2">pets</span>
     <h3 class="font-bold">Catspace</h3>
   </div>
   <div class="flex">
-    <div class="flex items-center px-8">
+    <div
+      class="flex items-center px-8 hover:cursor-pointer hover:text-dark-orange"
+      routerLink="/featured"
+      title="Featured"
+    >
       <h4 class="pr-2">Featured</h4>
       <span class="material-icons">auto_awesome</span>
     </div>
-    <div class="flex items-center px-8">
+    <div
+      class="flex items-center px-8 hover:cursor-pointer hover:text-dark-orange"
+      routerLink="/facts"
+      title="Cat Facts"
+    >
       <h4 class="pr-2">Cat Facts</h4>
       <span class="material-icons">local_fire_department</span>
     </div>
