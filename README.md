@@ -1,10 +1,12 @@
 # Catspace
 
-Welcome to Catspace! A place where cats can have their own social media platform. Think about Myspace but for cats!
+Welcome to Catspace! A place where cats can have their own social media platform. Think about Myspace... but for CATS!
 
-This project was built for the sole purpose of getting more familiar with the Angular Frameworks. 
+This project was built for the sole purpose of getting more familiar with the Angular Framework.
 
-I'll be continuing to add more and more to this project as time goes one.
+I'll be continuing to add more and more to this project as time goes on.
+
+Feel free to reach out if you have any comments or suggestions.
 
 Enjoy!
 
