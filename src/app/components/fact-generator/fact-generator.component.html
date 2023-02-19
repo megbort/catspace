@@ -1,0 +1,14 @@
+<div class="flex flex-col space-between bg-beige p-12 rounded-lg" style="min-height: 400px; max-height: 500px;">
+  <h2 class="pb-4">Fact Generator</h2>
+  <p class="pb-2">
+    Want to learn more about cats? Click the button to get a random cat fact!
+  </p>
+  <primary-button
+    text="Get a fact"
+    title="Get a fact"
+    (btnClick)="generateCatFact()" 
+  ></primary-button>
+  <div class="bg-white grow rounded p-4 mt-4">
+    <h4>{{ catFact.fact }}</h4>
+  </div>
+</div>
