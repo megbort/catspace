@@ -1,0 +1,13 @@
+table {
+  @apply w-full bg-white rounded;
+}
+
+.width-75 {
+  max-width: 75px;
+  min-width: 75px;
+}
+
+.width-50 {
+  max-width: 50px;
+  min-width: 50px;
+}
