@@ -13,6 +13,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { FeaturedComponent } from './pages/featured/featured.component';
 import { FactsComponent } from './pages/facts/facts.component';
 import { FactGeneratorComponent } from './components/fact-generator/fact-generator.component';
+import { BreedsTableComponent } from './components/breeds-table/breeds-table.component';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { FactGeneratorComponent } from './components/fact-generator/fact-generat
     FeaturedComponent,
     FactsComponent,
     FactGeneratorComponent,
+    BreedsTableComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
