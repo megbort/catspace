@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FEATURED } from 'src/app/data/mocks/featured';
 
 @Component({
   selector: 'app-featured',
   templateUrl: './featured.component.html',
-  styleUrls: ['./featured.component.scss']
+  styleUrls: ['./featured.component.scss'],
 })
-export class FeaturedComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class FeaturedComponent {
+  featuredProfiles = FEATURED;
 }

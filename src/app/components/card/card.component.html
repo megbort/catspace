@@ -1,0 +1,19 @@
+<div
+  class="flex flex-col justify-between shadow-lg rounded p-4 h-[325px] w-[250px]"
+>
+  <div class="p-">
+    <img
+      [src]="imageUrl"
+      alt="{{ name }} Image"
+      class="object-cover w-full h-[150px] rounded"
+    />
+  </div>
+  <h4>{{ name }}</h4>
+  <p>{{ handle }}</p>
+  <p class="text-sm">{{ followers }} Followers</p>
+  <p class="text-sm text-orange">{{ tags?.join(" ") }}</p>
+  <div class="flex justify-around pt-2">
+    <small-button text="Follow" title="Follow"></small-button>
+    <small-button text="View Profile" title="View Profile"></small-button>
+  </div>
+</div>

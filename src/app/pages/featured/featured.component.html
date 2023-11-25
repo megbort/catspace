@@ -1,3 +1,16 @@
-<div class="h-full">
-  <p>featured works!</p>
+<div class="bg-white">
+  <div class="py-12 px-8 max-w-6xl m-auto">
+    <h1 class="pb-12">Featured</h1>
+    <div class="container">
+      <div *ngFor="let profile of featuredProfiles">
+        <featured-card
+          [imageUrl]="profile.imageUrl"
+          [name]="profile.name"
+          [handle]="profile.handle"
+          [followers]="profile.followers"
+          [tags]="profile.tags"
+        ></featured-card>
+      </div>
+    </div>
+  </div>
 </div>

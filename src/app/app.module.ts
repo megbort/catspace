@@ -9,11 +9,13 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ButtonComponent } from './components/button/button.component';
+import { ButtonComponent } from './components/buttons/button.component';
+import { SmallButtonComponent } from './components/buttons/sm-button.component';
 import { FeaturedComponent } from './pages/featured/featured.component';
 import { FactsComponent } from './pages/facts/facts.component';
 import { FactGeneratorComponent } from './components/fact-generator/fact-generator.component';
 import { BreedsTableComponent } from './components/breeds-table/breeds-table.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   imports: [
@@ -21,7 +23,7 @@ import { BreedsTableComponent } from './components/breeds-table/breeds-table.com
     AppRoutingModule,
     MaterialModules,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [
     AppComponent,
@@ -33,8 +35,10 @@ import { BreedsTableComponent } from './components/breeds-table/breeds-table.com
     FactsComponent,
     FactGeneratorComponent,
     BreedsTableComponent,
+    CardComponent,
+    SmallButtonComponent,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
