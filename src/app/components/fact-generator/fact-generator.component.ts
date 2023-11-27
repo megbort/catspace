@@ -8,13 +8,20 @@ import { CatFact } from 'src/app/data/models/cat-fact';
   styleUrls: ['./fact-generator.component.scss'],
 })
 export class FactGeneratorComponent {
+  isLoading = false;
   catFact: CatFact = {};
 
   constructor(private service: CatFactService) {}
 
   generateCatFact() {
-    return this.service.getCatFacts().subscribe((data) => {
-      this.catFact = data;
-    });
+    this.isLoading = true;
+
+    // delay response to simulate fetching from server
+    setTimeout(() => {
+      this.service.getCatFacts().subscribe((data) => {
+        this.catFact = data;
+        this.isLoading = false;
+      });
+    }, 1000);
   }
 }
