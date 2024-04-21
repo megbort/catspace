@@ -27,16 +27,20 @@
     <primary-button text="Read More" title="Read More"></primary-button>
   </div>
 </section>
-<section class="flex flex-col py-32 max-w-6xl m-auto">
-  <div>
-    <h2 class="pb-4">Featured Profiles</h2>
-    <!-- TODO: Add shared ui card component -->
-    <div class="flex justify-between pb-4">
-      <div class="w-64 h-48 rounded-md bg-beige mr-4"></div>
-      <div class="w-64 h-48 rounded-md bg-beige mx-4"></div>
-      <div class="w-64 h-48 rounded-md bg-beige mx-4"></div>
-      <div class="w-64 h-48 rounded-md bg-beige ml-4"></div>
-    </div>
-    <a class="mt-4">Explore more profiles</a>
+<section class="py-24 max-w-6xl m-auto">
+  <h2>Featured Profiles</h2>
+  <div class="flex justify-between py-4">
+    <ng-container *ngFor="let profile of homeFeaturedProfiles">
+      <featured-card
+        [imageUrl]="profile.imageUrl"
+        [name]="profile.name"
+        [handle]="profile.handle"
+        [followers]="profile.followers"
+        [tags]="profile.tags"
+      ></featured-card>
+    </ng-container>
   </div>
+  <a class="mt-4 hover:cursor-pointer" routerLink="/featured" title="Featured"
+    >Explore more profiles</a
+  >
 </section>

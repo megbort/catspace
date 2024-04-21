@@ -36,7 +36,7 @@ export const FEATURED: FeaturedProfile[] = [
     name: 'Luna Moonpurr',
     handle: '@lunathepurr',
     followers: 205,
-    tags: ['#mysterious', '#black', '#moonlight', '#elegant'],
+    tags: ['#mysterious', '#paws', '#moonlight', '#elegant'],
     following: true,
   },
   {
