@@ -16,6 +16,7 @@ import { FactsComponent } from './pages/facts/facts.component';
 import { FactGeneratorComponent } from './components/fact-generator/fact-generator.component';
 import { BreedsTableComponent } from './components/breeds-table/breeds-table.component';
 import { CardComponent } from './components/card/card.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { CardComponent } from './components/card/card.component';
     BreedsTableComponent,
     CardComponent,
     SmallButtonComponent,
+    ProfileComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,3 +1,11 @@
-<app-menu></app-menu>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<mat-drawer-container
+  class="example-container"
+  [ngClass]="{ 'opacity-40': !enableContent, 'opacity-100': enableContent }"
+  hasBackdrop="true"
+>
+  <app-menu (openProfile)="toggleDrawer(true)"></app-menu>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</mat-drawer-container>
+
+<app-profile #drawer (statusChange)="handleStatusChange($event)"></app-profile>
