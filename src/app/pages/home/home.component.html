@@ -12,18 +12,15 @@
     ></primary-button>
   </div>
 </section>
-<section class="flex justify-between items-center py-32 max-w-6xl m-auto">
+<section
+  class="flex flex-col justify-between items-center py-32 max-w-6xl m-auto sm:flex-row"
+>
   <div class="basis-1/2 px-8">
     <img src="../../../assets/images/cats-1.png" alt="Cats" />
   </div>
   <div class="basis-1/2 px-8">
     <h2 class="pb-4">Lorem Ipsum</h2>
-    <p class="pb-4">
-      Lorem ipsum dolor sit amet. Quo voluptates consectetur ut assumenda sint
-      nam omnis dignissimos et numquam nisi. Quo deserunt autem eum aliquid
-      consectetur et accusamus architecto nam quia natus aut repudiandae quis
-      qui explicabo fugiat a architecto cumque.
-    </p>
+    <p class="pb-4">{{ aboutText }}</p>
     <primary-button text="Read More" title="Read More"></primary-button>
   </div>
 </section>
@@ -40,7 +37,9 @@
       ></featured-card>
     </ng-container>
   </div>
-  <a class="mt-4 hover:cursor-pointer" routerLink="/featured" title="Featured"
-    >Explore more profiles</a
-  >
+  <div class="pl-4 text-center sm:text-left">
+    <a class="mt-4 hover:cursor-pointer" routerLink="/featured" title="Featured"
+      >Explore more profiles</a
+    >
+  </div>
 </section>

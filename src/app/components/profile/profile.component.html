@@ -1,0 +1,64 @@
+<mat-drawer #drawer mode="over" position="end">
+  <div class="h-full">
+    <div class="flex justify-between bg-grey p-4">
+      <div class="flex items-center">
+        <div class="w-[90px]">
+          <img
+            [src]="user?.imageUrl"
+            alt="{{ user?.firstName }} {{ user?.lastName }} Image"
+            class="object-cover w-full h-[90px] rounded-full"
+          />
+        </div>
+        <div class="flex flex-col flex-grow pl-2">
+          <h3>{{ user?.firstName }}</h3>
+          <h3>{{ user?.lastName }}</h3>
+          <p>{{ user?.handle }}</p>
+        </div>
+      </div>
+      <span
+        class="material-icons-xl hover:cursor-pointer hover:text-dark-orange"
+        (click)="close()"
+        >close</span
+      >
+    </div>
+    <nav aria-label="Profile">
+      <div class="flex flex-col items-center pt-14">
+        <div
+          class="flex items-center hover:cursor-pointer hover:text-dark-orange"
+          title="My Page"
+        >
+          <span class="material-icons-xl">house</span>
+          <p class="profile-menu pl-2">My Page</p>
+        </div>
+        <div
+          class="flex items-center hover:cursor-pointer hover:text-dark-orange"
+          title="Following"
+        >
+          <span class="material-icons-xl">favorite</span>
+          <p class="profile-menu pl-2">Following</p>
+        </div>
+        <div
+          class="flex items-center hover:cursor-pointer hover:text-dark-orange"
+          title="Settings"
+        >
+          <span class="material-icons-xl">settings</span>
+          <p class="profile-menu pl-2">Settings</p>
+        </div>
+        <div
+          class="flex items-center hover:cursor-pointer hover:text-dark-orange"
+          title="Notifications"
+        >
+          <span class="material-icons-xl">notifications</span>
+          <p class="profile-menu pl-2">Notifications</p>
+        </div>
+        <div
+          class="flex items-center hover:cursor-pointer hover:text-dark-orange"
+          title="Logout"
+        >
+          <span class="material-icons-xl">logout</span>
+          <p class="profile-menu pl-2">Logout</p>
+        </div>
+      </div>
+    </nav>
+  </div>
+</mat-drawer>

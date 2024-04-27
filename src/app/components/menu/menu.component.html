@@ -1,37 +1,41 @@
-<div class="bg-beige flex justify-between items-center h-28 px-8">
-  <div
-    class="flex items-center hover:cursor-pointer"
-    routerLink="/home"
-    title="Home"
-  >
-    <span class="material-icons mr-2">pets</span>
-    <h3 class="font-bold">Catspace</h3>
-  </div>
-  <div class="flex">
+<nav aria-label="Main">
+  <div class="bg-beige flex justify-between items-center h-28 px-4 md:px-8">
     <div
-      class="flex items-center px-8 hover:cursor-pointer hover:text-dark-orange"
-      routerLink="/featured"
-      title="Featured"
+      class="flex items-center hover:cursor-pointer w-16"
+      routerLink="/home"
+      title="Home"
     >
-      <h4 class="pr-2">Featured</h4>
-      <span class="material-icons">auto_awesome</span>
+      <span class="material-icons mr-2">pets</span>
+      <h3 class="font-bold hidden md:block">Catspace</h3>
     </div>
-    <div
-      class="flex items-center px-8 hover:cursor-pointer hover:text-dark-orange"
-      routerLink="/facts"
-      title="Cat Facts"
-    >
-      <h4 class="pr-2">Cat Facts</h4>
-      <span class="material-icons">local_fire_department</span>
+    <div class="flex">
+      <div
+        class="flex items-center hover:cursor-pointer hover:text-dark-orange"
+        routerLink="/featured"
+        title="Featured"
+      >
+        <h4 class="pr-1">Featured</h4>
+        <span class="material-icons hidden sm:block">auto_awesome</span>
+      </div>
+      <div
+        class="flex items-center pl-2 md:pl-8 hover:cursor-pointer hover:text-dark-orange"
+        routerLink="/facts"
+        title="Cat Facts"
+      >
+        <h4 class="pr-1">Cat Facts</h4>
+        <span class="material-icons hidden sm:block"
+          >local_fire_department</span
+        >
+      </div>
+    </div>
+    <div class="flex">
+      <span class="material-icons">search</span>
+      <span class="material-icons mx-1 sm:mx-4">notifications</span>
+      <span
+        class="material-icons hover:cursor-pointer hover:text-dark-orange"
+        (click)="openSidePanel()"
+        >person</span
+      >
     </div>
   </div>
-  <div class="flex">
-    <span class="material-icons">search</span>
-    <span class="material-icons mx-4">notifications</span>
-    <span
-      class="material-icons hover:cursor-pointer hover:text-dark-orange"
-      (click)="openSidePanel()"
-      >person</span
-    >
-  </div>
-</div>
+</nav>

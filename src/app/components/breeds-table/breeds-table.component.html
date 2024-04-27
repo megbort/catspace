@@ -1,49 +1,57 @@
 <div class="bg-beige rounded-lg p-12">
-  <h2 class="pb-4">Cat Breeds</h2>
+  <h2 class="pb-4 text-lg lg:text-xl">Cat Breeds</h2>
   <p class="pb-4">Check out this list of all the cat breeds in the world!</p>
-  <table
-    mat-table
-    [dataSource]="dataSource"
-    style="min-height: 600px; max-height: 620px"
-  >
-    <!-- Breed Column -->
-    <ng-container matColumnDef="breed">
-      <th mat-header-cell *matHeaderCellDef [ngClass]="'width-75'">Breed</th>
-      <td mat-cell *matCellDef="let element" [ngClass]="'width-75'">
-        {{ element.breed }}
-      </td>
-    </ng-container>
-    <!-- Country Column -->
-    <ng-container matColumnDef="country">
-      <th mat-header-cell *matHeaderCellDef [ngClass]="'width-75'">Country</th>
-      <td mat-cell *matCellDef="let element" [ngClass]="'width-75'">
-        {{ element.country }}
-      </td>
-    </ng-container>
-    <!-- Origin Column -->
-    <ng-container matColumnDef="origin">
-      <th mat-header-cell *matHeaderCellDef [ngClass]="'width-50'">Origin</th>
-      <td mat-cell *matCellDef="let element" [ngClass]="'width-50'">
-        {{ element.origin }}
-      </td>
-    </ng-container>
-    <!-- Coat Column -->
-    <ng-container matColumnDef="coat">
-      <th mat-header-cell *matHeaderCellDef [ngClass]="'width-50'">Coat</th>
-      <td mat-cell *matCellDef="let element" [ngClass]="'width-50'">
-        {{ element.coat }}
-      </td>
-    </ng-container>
-    <!-- Pattern Column -->
-    <ng-container matColumnDef="pattern">
-      <th mat-header-cell *matHeaderCellDef [ngClass]="'width-50'">Pattern</th>
-      <td mat-cell *matCellDef="let element" [ngClass]="'width-50'">
-        {{ element.pattern }}
-      </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+  <div class="overflow-x-auto">
+    <table mat-table [dataSource]="dataSource" class="min-w-full">
+      <!-- Breed Column -->
+      <ng-container matColumnDef="breed">
+        <th mat-header-cell *matHeaderCellDef class="p-2 text-sm font-semibold">
+          Breed
+        </th>
+        <td mat-cell *matCellDef="let element" class="p-2">
+          {{ element.breed }}
+        </td>
+      </ng-container>
+      <!-- Country Column -->
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef class="p-2 text-sm font-semibold">
+          Country
+        </th>
+        <td mat-cell *matCellDef="let element" class="p-2">
+          {{ element.country }}
+        </td>
+      </ng-container>
+      <!-- Origin Column -->
+      <ng-container matColumnDef="origin">
+        <th mat-header-cell *matHeaderCellDef class="p-2 text-sm font-semibold">
+          Origin
+        </th>
+        <td mat-cell *matCellDef="let element" class="p-2">
+          {{ element.origin }}
+        </td>
+      </ng-container>
+      <!-- Coat Column -->
+      <ng-container matColumnDef="coat">
+        <th mat-header-cell *matHeaderCellDef class="p-2 text-sm font-semibold">
+          Coat
+        </th>
+        <td mat-cell *matCellDef="let element" class="p-2">
+          {{ element.coat }}
+        </td>
+      </ng-container>
+      <!-- Pattern Column -->
+      <ng-container matColumnDef="pattern">
+        <th mat-header-cell *matHeaderCellDef class="p-2 text-sm font-semibold">
+          Pattern
+        </th>
+        <td mat-cell *matCellDef="let element" class="p-2">
+          {{ element.pattern }}
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
   <mat-paginator
     [pageSize]="10"
     showFirstLastButtons

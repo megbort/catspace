@@ -6,7 +6,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
-import { PROFILE, User } from '../data/mocks/profile';
+import { PROFILE, User } from '../../data/mocks/profile';
 
 @Component({
   selector: 'app-profile',

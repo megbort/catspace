@@ -1,5 +1,5 @@
 import { Component, ViewChild, Renderer2 } from '@angular/core';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @Component({
   selector: 'app-root',

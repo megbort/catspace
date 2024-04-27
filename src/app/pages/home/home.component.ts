@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FeaturedProfile } from 'src/app/data/mocks/featured';
 import { FEATURED } from 'src/app/data/mocks/featured';
+import { ABOUT } from 'src/app/data/mocks/placeholder-text';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,7 @@ import { FEATURED } from 'src/app/data/mocks/featured';
 })
 export class HomeComponent implements OnInit {
   homeFeaturedProfiles?: FeaturedProfile[];
+  aboutText = ABOUT;
 
   ngOnInit(): void {
     this.homeFeaturedProfiles = FEATURED.slice(0, 4);
