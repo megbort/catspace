@@ -95,4 +95,4 @@ Catspace runs on Firebase: Firestore holds users (`/users/{uid}`) and their post
 
 ## State Management
 
-Hybrid signals + RxJS, no traditional NgRx store. Global state lives in **NgRx Signal Store** (`@ngrx/signals`) — `GlobalStore` at `src/app/shared/state/global.store.ts` currently tracks `isLoading`. Feature/domain state lives in services as signals (e.g. `AuthService.currentUserSignal`) alongside RxJS Observables for async streams. Signal Store is the pattern going forward for any new shared/global state.
+Global state uses NgRx Signal Store (`@ngrx/signals`) — `GlobalStore` at `src/app/shared/state/global.store.ts`. Feature/domain state lives in services as signals (e.g. `AuthService.currentUserSignal`) alongside RxJS Observables for async streams.
