@@ -5,16 +5,16 @@ import {
   collection,
   deleteDoc,
   doc,
-  Firestore,
   getDocs,
   setDoc,
-} from '@angular/fire/firestore';
+} from 'firebase/firestore';
+import { FIRESTORE } from '../shared/config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FollowService {
-  private readonly firestore = inject(Firestore);
+  private readonly firestore = inject(FIRESTORE);
 
   followUser(currentUserId: string, targetUserId: string): Observable<void> {
     const currentUserFollowingDoc = this.getUserFollowingDoc(

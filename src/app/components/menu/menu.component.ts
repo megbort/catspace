@@ -1,8 +1,8 @@
-import { Component, computed, inject, output } from '@angular/core';
+import { Component, computed, inject, output, ChangeDetectionStrategy } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { SignupComponent } from '../auth/signup/signup.component';
@@ -19,13 +19,14 @@ import { CreatePostComponent } from '../create-post/create-post.component';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
-    TranslateModule,
+    TranslatePipe,
     RouterModule,
     MatDialogModule,
     UnpicImageDirective,
     BannerComponent,
   ],
   templateUrl: './menu.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent {

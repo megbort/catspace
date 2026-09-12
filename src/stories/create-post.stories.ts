@@ -1,9 +1,8 @@
-import { Meta, moduleMetadata, type StoryObj } from '@storybook/angular';
+import { Meta, type StoryObj } from '@storybook/angular';
 import { expect, userEvent, within } from 'storybook/test';
 import { applicationConfig } from '@storybook/angular';
-import { TranslateModule } from '@ngx-translate/core';
-import { storybookTranslateConfig } from '../app/shared';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { storybookTranslateProviders } from '../app/shared';
+import { provideHttpClient } from '@angular/common/http';
 import { CreatePostComponent } from '../app/components/create-post/create-post.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import {
@@ -24,7 +23,8 @@ const meta: Meta<CreatePostComponent> = {
   decorators: [
     applicationConfig({
       providers: [
-        provideHttpClient(withFetch()),
+        provideHttpClient(),
+        storybookTranslateProviders,
         GlobalStore,
         LoaderService,
         {
@@ -67,9 +67,6 @@ const meta: Meta<CreatePostComponent> = {
           },
         },
       ],
-    }),
-    moduleMetadata({
-      imports: [TranslateModule.forRoot(storybookTranslateConfig)],
     }),
   ],
 };

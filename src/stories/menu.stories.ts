@@ -1,10 +1,9 @@
-import { Meta, moduleMetadata, type StoryObj } from '@storybook/angular';
+import { Meta, type StoryObj } from '@storybook/angular';
 import { expect, within } from 'storybook/test';
 import { MenuComponent } from '../app/components/menu/menu.component';
 import { applicationConfig } from '@storybook/angular';
-import { TranslateModule } from '@ngx-translate/core';
-import { storybookTranslateConfig } from '../app/shared/config/translate';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { storybookTranslateProviders } from '../app/shared/config/translate';
+import { provideHttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { AuthService } from '../app/services';
@@ -16,7 +15,8 @@ const meta: Meta<MenuComponent> = {
   decorators: [
     applicationConfig({
       providers: [
-        provideHttpClient(withFetch()),
+        provideHttpClient(),
+        storybookTranslateProviders,
         {
           provide: ActivatedRoute,
           useValue: {
@@ -38,9 +38,6 @@ const meta: Meta<MenuComponent> = {
           },
         },
       ],
-    }),
-    moduleMetadata({
-      imports: [TranslateModule.forRoot(storybookTranslateConfig)],
     }),
   ],
 };

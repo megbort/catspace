@@ -5,6 +5,7 @@ import {
   inject,
   effect,
   OnInit,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import {
   Post,
@@ -17,7 +18,7 @@ import {
   NotificationService,
 } from '../../services';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import {
@@ -37,13 +38,14 @@ import { PostDetailComponent } from '../../components/post-detail/post-detail.co
 @Component({
   selector: 'app-profile',
   imports: [
-    TranslateModule,
+    TranslatePipe,
     MatButtonModule,
     MatDialogModule,
     MatButtonToggleModule,
     PostCardComponent,
     SkeletonComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent implements OnInit {

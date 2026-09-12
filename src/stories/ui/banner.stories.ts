@@ -1,9 +1,8 @@
-import { Meta, moduleMetadata, type StoryObj } from '@storybook/angular';
+import { Meta, type StoryObj } from '@storybook/angular';
 import { expect, within } from 'storybook/test';
 import { applicationConfig } from '@storybook/angular';
-import { TranslateModule } from '@ngx-translate/core';
-import { storybookTranslateConfig } from '../../app/shared';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { storybookTranslateProviders } from '../../app/shared';
+import { provideHttpClient } from '@angular/common/http';
 import { BannerComponent } from '../../app/components/ui/banner.component';
 
 const meta: Meta<BannerComponent> = {
@@ -11,10 +10,7 @@ const meta: Meta<BannerComponent> = {
   component: BannerComponent,
   decorators: [
     applicationConfig({
-      providers: [provideHttpClient(withFetch())],
-    }),
-    moduleMetadata({
-      imports: [TranslateModule.forRoot(storybookTranslateConfig)],
+      providers: [provideHttpClient(), storybookTranslateProviders],
     }),
   ],
 };

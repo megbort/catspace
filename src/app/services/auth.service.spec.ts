@@ -2,17 +2,13 @@ import { TestBed } from '@angular/core/testing';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { firstValueFrom, of } from 'rxjs';
 import { Router } from '@angular/router';
-import { Auth } from '@angular/fire/auth';
 import { AuthService } from './auth.service';
 import { UserService } from './user.service';
-
-vi.mock('@angular/fire/auth', () => ({
-  Auth: class {},
-  user: vi.fn(() => of(null)),
-  createUserWithEmailAndPassword: vi.fn(),
-}));
+import { FIREBASE_AUTH } from '../shared/config';
 
 vi.mock('firebase/auth', () => ({
+  onAuthStateChanged: vi.fn(),
+  createUserWithEmailAndPassword: vi.fn(),
   signInWithEmailAndPassword: vi.fn(),
   updateProfile: vi.fn(() => Promise.resolve()),
 }));
@@ -31,7 +27,7 @@ describe('AuthService', () => {
     vi.clearAllMocks();
     TestBed.configureTestingModule({
       providers: [
-        { provide: Auth, useValue: mockFirebaseAuth },
+        { provide: FIREBASE_AUTH, useValue: mockFirebaseAuth },
         { provide: Router, useValue: mockRouter },
         { provide: UserService, useValue: mockUserService },
       ],
@@ -105,7 +101,7 @@ describe('AuthService', () => {
 
   describe('register', () => {
     it('creates a Firebase user and then saves the profile', async () => {
-      const { createUserWithEmailAndPassword } = await import('@angular/fire/auth');
+      const { createUserWithEmailAndPassword } = await import('firebase/auth');
       const mockCredential = {
         user: { uid: 'new-uid', getIdToken: vi.fn(() => Promise.resolve('token')) },
       };

@@ -13,7 +13,7 @@ import {
   NotificationService,
   Post,
 } from '../../services';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { UnpicImageDirective } from '@unpic/angular';
 import { catchError, finalize, take, tap } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
@@ -29,7 +29,7 @@ import { AuthMessageComponent } from '../auth/auth-message.component';
 @Component({
   selector: 'app-post-detail',
   imports: [
-    TranslateModule,
+    TranslatePipe,
     UnpicImageDirective,
     MatButtonModule,
     MatIconModule,

@@ -1,10 +1,9 @@
-import { Meta, moduleMetadata, type StoryObj } from '@storybook/angular';
+import { Meta, type StoryObj } from '@storybook/angular';
 import { expect, within } from 'storybook/test';
 import { UserSidenavComponent } from '../app/components/user-sidenav/user-sidenav.component';
 import { applicationConfig } from '@storybook/angular';
-import { TranslateModule } from '@ngx-translate/core';
-import { storybookTranslateConfig } from '../app/shared';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { storybookTranslateProviders } from '../app/shared';
+import { provideHttpClient } from '@angular/common/http';
 import { signal } from '@angular/core';
 import { USERS } from '../app/services/mocks';
 import { AuthService } from '../app/services';
@@ -17,7 +16,8 @@ const meta: Meta<UserSidenavComponent> = {
   decorators: [
     applicationConfig({
       providers: [
-        provideHttpClient(withFetch()),
+        provideHttpClient(),
+        storybookTranslateProviders,
         {
           provide: AuthService,
           useValue: {
@@ -33,9 +33,6 @@ const meta: Meta<UserSidenavComponent> = {
           useValue: {},
         },
       ],
-    }),
-    moduleMetadata({
-      imports: [TranslateModule.forRoot(storybookTranslateConfig)],
     }),
   ],
 };

@@ -1,6 +1,6 @@
-import { Component, inject, computed, OnInit } from '@angular/core';
+import { Component, inject, computed, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LoaderService, User, UserService } from '../../services';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ProfileCardComponent } from '../../components/profile-card/profile-card.component';
 import { Router } from '@angular/router';
 import { catchError, map, of } from 'rxjs';
@@ -9,8 +9,9 @@ import { SkeletonComponent } from '../../components/ui/skeleton.component';
 
 @Component({
   selector: 'app-featured',
-  imports: [TranslateModule, ProfileCardComponent, SkeletonComponent],
+  imports: [TranslatePipe, ProfileCardComponent, SkeletonComponent],
   templateUrl: './featured.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: `
     :host {
       @apply grow;

@@ -1,6 +1,6 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ProfileCardComponent } from '../../components/profile-card/profile-card.component';
 import { AuthService, User, UserService } from '../../services';
 import { Router, RouterModule } from '@angular/router';
@@ -13,12 +13,13 @@ import { MatDialog } from '@angular/material/dialog';
   selector: 'app-home',
   imports: [
     MatButtonModule,
-    TranslateModule,
+    TranslatePipe,
     ProfileCardComponent,
     UnpicImageDirective,
     RouterModule,
   ],
   templateUrl: './home.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {

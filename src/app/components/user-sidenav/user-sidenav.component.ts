@@ -1,26 +1,26 @@
-import { Component, output, computed, inject } from '@angular/core';
+import { Component, output, computed, inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { AuthService } from '../../services';
 import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 import { CreatePostComponent } from '../create-post/create-post.component';
 
 @Component({
   selector: 'app-user-sidenav',
-  standalone: true,
   imports: [
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
     RouterModule,
-    TranslateModule,
+    TranslatePipe,
   ],
   templateUrl: './user-sidenav.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./user-sidenav.component.scss'],
 })
 export class UserSidenavComponent {

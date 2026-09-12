@@ -5,8 +5,9 @@ import {
   OnInit,
   OnDestroy,
   signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
@@ -33,13 +34,14 @@ import { of, Subject } from 'rxjs';
 @Component({
   selector: 'app-following',
   imports: [
-    TranslateModule,
+    TranslatePipe,
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
     RouterModule,
     PostCardComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './following.component.html',
 })
 export class FollowingComponent implements OnInit, OnDestroy {

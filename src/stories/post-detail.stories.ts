@@ -1,11 +1,9 @@
 import { signal } from '@angular/core';
-import { provideHttpClient, withFetch } from '@angular/common/http';
-import { TranslateModule } from '@ngx-translate/core';
+import { provideHttpClient } from '@angular/common/http';
 import {
   applicationConfig,
   componentWrapperDecorator,
   Meta,
-  moduleMetadata,
   StoryObj,
 } from '@storybook/angular';
 import { expect, userEvent, within } from 'storybook/test';
@@ -18,7 +16,7 @@ import {
   USERS,
   mockPost,
 } from '../app/services';
-import { storybookTranslateConfig } from '../app/shared';
+import { storybookTranslateProviders } from '../app/shared';
 
 const post = mockPost;
 
@@ -28,7 +26,8 @@ const meta: Meta<PostDetailComponent> = {
   decorators: [
     applicationConfig({
       providers: [
-        provideHttpClient(withFetch()),
+        provideHttpClient(),
+        storybookTranslateProviders,
         {
           provide: FavoriteService,
           useValue: {
@@ -57,9 +56,6 @@ const meta: Meta<PostDetailComponent> = {
           },
         },
       ],
-    }),
-    moduleMetadata({
-      imports: [TranslateModule.forRoot(storybookTranslateConfig)],
     }),
     componentWrapperDecorator(
       (story) =>
