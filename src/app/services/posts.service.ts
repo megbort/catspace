@@ -5,16 +5,16 @@ import { map, catchError } from 'rxjs/operators';
 import {
   collection,
   doc,
-  Firestore,
   getDocs,
   setDoc,
-} from '@angular/fire/firestore';
+} from 'firebase/firestore';
+import { FIRESTORE } from '../shared/config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostService {
-  firestore = inject(Firestore);
+  firestore = inject(FIRESTORE);
 
   private readonly _postCreatedSignal = signal<{
     uid: string;

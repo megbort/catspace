@@ -1,9 +1,8 @@
-import { Meta, moduleMetadata, type StoryObj } from '@storybook/angular';
+import { Meta, type StoryObj } from '@storybook/angular';
 import { expect, userEvent, within } from 'storybook/test';
 import { applicationConfig } from '@storybook/angular';
-import { TranslateModule } from '@ngx-translate/core';
-import { storybookTranslateConfig } from '../app/shared/config/translate';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { storybookTranslateProviders } from '../app/shared/config/translate';
+import { provideHttpClient } from '@angular/common/http';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { EditProfileComponent } from '../app/components/edit-profile/edit-profile.component';
 import {
@@ -23,7 +22,8 @@ const meta: Meta<EditProfileComponent> = {
   decorators: [
     applicationConfig({
       providers: [
-        provideHttpClient(withFetch()),
+        provideHttpClient(),
+        storybookTranslateProviders,
         GlobalStore,
         LoaderService,
         {
@@ -63,9 +63,6 @@ const meta: Meta<EditProfileComponent> = {
           useValue: {},
         },
       ],
-    }),
-    moduleMetadata({
-      imports: [TranslateModule.forRoot(storybookTranslateConfig)],
     }),
   ],
 };

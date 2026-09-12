@@ -4,7 +4,7 @@ This file provides guidance to AI coding agents (Claude Code, Codex, and others)
 
 ## What This Is
 
-Catspace is a social media platform for cats — think Myspace but for felines. Built with Angular 21, Firebase/Firestore backend, and deployed at catspace.megankrenbrink.com.
+Catspace is a social media platform for cats — think Myspace but for felines. Built with Angular 22, Firebase/Firestore backend, and deployed at catspace.megankrenbrink.com.
 
 ## Commands
 
@@ -26,9 +26,9 @@ CI (`.github/workflows/ci.yml`) runs `ng test` then `npm run e2e` on every push/
 
 **State management:** Hybrid signals + RxJS. `GlobalStore` (NgRx Signals) at `src/app/shared/state/global.store.ts` holds global `isLoading`. Services expose signals (e.g., `AuthService.currentUserSignal`) and Observables. No traditional NgRx store.
 
-**Data layer:** Firestore via `@angular/fire`. Users stored at `/users/{uid}`, posts at `/users/{uid}/posts`. Image uploads go to Cloudinary via `MediaService`. Auth is Firebase Auth.
+**Data layer:** Firestore via the Firebase JS SDK directly — there is no `@angular/fire`. `src/app/shared/config/firebase.ts` declares three `providedIn: 'root'` injection tokens: `FIREBASE_APP`, `FIRESTORE` and `FIREBASE_AUTH`. Services `inject(FIRESTORE)` / `inject(FIREBASE_AUTH)` and import the modular functions (`collection`, `doc`, `getDoc`, `setDoc`, …) straight from `firebase/firestore` and `firebase/auth`. Users stored at `/users/{uid}`, posts at `/users/{uid}/posts`. Image uploads go to Cloudinary via `MediaService`. Auth is Firebase Auth; `AuthService.user$` wraps `onAuthStateChanged` in an `Observable`.
 
-**i18n:** `@ngx-translate` with JSON files in `src/assets/i18n/` (currently `en.json`, `fr.json`). Config lives in `src/app/shared/config/`.
+**i18n:** `@ngx-translate` v18 with JSON files in `src/assets/i18n/` (currently `en.json`, `fr.json`). Config lives in `src/app/shared/config/translate.ts`, which exports `defaultTranslateProviders` and `storybookTranslateProviders` built from `provideTranslateService()` + `provideTranslateHttpLoader()`. `TranslateModule` no longer exists — components import `TranslatePipe` (and `TranslateDirective` if needed).
 
 **Styling:** Tailwind CSS (utility classes) + Angular Material (components/dialogs) + SCSS. Global styles in `src/styles.scss`; component styles use `.scss` files.
 
@@ -50,7 +50,7 @@ These conventions apply when writing or changing code. (Standalone components, s
 
 **Angular:** Do NOT set `standalone: true` in `@Component`/`@Directive`/`@Pipe` decorators (it's the default). Lazy-load feature routes. Use the `@unpic/angular` `unpic` directive for images (the established pattern in this codebase — not `NgOptimizedImage`), wrapped in `@defer (on viewport)` for below-the-fold images. Do NOT use `@HostBinding`/`@HostListener` — put host bindings in the `host` object of the decorator instead. Do NOT use `BehaviorSubject` for state — use signals.
 
-**Components:** Use the `input()` and `output()` functions instead of decorators. Use `model()` instead of pairing `input()`/`output()` for two-way `[(prop)]` bindings. Use `computed()` for derived state, `linkedSignal()` for state derived from multiple reactive sources that must stay synchronized. Set `changeDetection: ChangeDetectionStrategy.OnPush`. Use `class`/`style` bindings instead of `ngClass`/`ngStyle`. Query the DOM with the `viewChild()` signal, not the `@ViewChild` decorator. Prefer inline templates for small components.
+**Components:** Use the `input()` and `output()` functions instead of decorators. Use `model()` instead of pairing `input()`/`output()` for two-way `[(prop)]` bindings. Use `computed()` for derived state, `linkedSignal()` for state derived from multiple reactive sources that must stay synchronized. Change detection: Angular 22 makes `OnPush` the default when no strategy is set. Existing components were pinned to `ChangeDetectionStrategy.Eager` during the v21 -> v22 upgrade to preserve behaviour, so most of the codebase reads `Eager` today. New components should set `ChangeDetectionStrategy.OnPush` explicitly; converting the pinned `Eager` components to `OnPush` is tracked as separate follow-up work. Use `class`/`style` bindings instead of `ngClass`/`ngStyle`. Query the DOM with the `viewChild()` signal, not the `@ViewChild` decorator. Prefer inline templates for small components.
 
 **State:** Signals for local component state, `computed()` for derived state. Keep transformations pure. Never `mutate` a signal — use `set` or `update`.
 

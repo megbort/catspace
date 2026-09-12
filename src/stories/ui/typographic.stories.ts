@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { StoryObj, Meta } from '@storybook/angular';
 import { expect, within } from 'storybook/test';
 
@@ -17,6 +17,7 @@ import { expect, within } from 'storybook/test';
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: ` <div class="p-4 overflow-y-scroll h-full">
     <table>
       <thead class="text-left">

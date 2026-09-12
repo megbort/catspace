@@ -4,18 +4,18 @@ import { catchError, from, map, Observable, of, throwError } from 'rxjs';
 import {
   collection,
   doc,
-  Firestore,
   getDoc,
   getDocs,
   setDoc,
   updateDoc,
-} from '@angular/fire/firestore';
+} from 'firebase/firestore';
+import { FIRESTORE } from '../shared/config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  firestore = inject(Firestore);
+  firestore = inject(FIRESTORE);
 
   createUserProfile(
     uid: string,

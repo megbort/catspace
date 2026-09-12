@@ -1,29 +1,18 @@
-import { TranslateLoader, TranslateModuleConfig } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient } from '@angular/common/http';
+import { Provider } from '@angular/core';
+import { provideTranslateService } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
-}
+export const SUPPORTED_LANGUAGES = ['en', 'fr'];
 
-export function HttpLoaderStorybookFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './i18n/', '.json');
-}
+export const defaultTranslateProviders: Provider[] = provideTranslateService({
+  fallbackLang: 'en',
+  loader: provideTranslateHttpLoader({
+    prefix: 'assets/i18n/',
+    suffix: '.json',
+  }),
+});
 
-export const defaultTranslateConfig: TranslateModuleConfig = {
-  loader: {
-    provide: TranslateLoader,
-    useFactory: HttpLoaderFactory,
-    deps: [HttpClient],
-  },
-  defaultLanguage: 'en',
-};
-
-export const storybookTranslateConfig: TranslateModuleConfig = {
-  loader: {
-    provide: TranslateLoader,
-    useFactory: HttpLoaderStorybookFactory,
-    deps: [HttpClient],
-  },
-  defaultLanguage: 'en',
-};
+export const storybookTranslateProviders: Provider[] = provideTranslateService({
+  fallbackLang: 'en',
+  loader: provideTranslateHttpLoader({ prefix: './i18n/', suffix: '.json' }),
+});

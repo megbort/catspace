@@ -5,9 +5,10 @@ import {
   output,
   signal,
   OnInit,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import {
   User,
   AuthService,
@@ -32,12 +33,13 @@ export interface FollowEvent {
 @Component({
   selector: 'app-profile-card',
   imports: [
-    TranslateModule,
+    TranslatePipe,
     MatButtonModule,
     RouterModule,
     MatButtonToggleModule,
     UnpicImageDirective,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './profile-card.component.html',
 })
 export class ProfileCardComponent implements OnInit {

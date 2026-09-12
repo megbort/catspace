@@ -1,9 +1,8 @@
 import { Meta, moduleMetadata, type StoryObj } from '@storybook/angular';
 import { expect, userEvent, within } from 'storybook/test';
 import { applicationConfig } from '@storybook/angular';
-import { TranslateModule } from '@ngx-translate/core';
-import { storybookTranslateConfig } from '../../app/shared';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { storybookTranslateProviders } from '../../app/shared';
+import { provideHttpClient } from '@angular/common/http';
 import { NotificationComponent } from '../../app/components/ui/notification.component';
 import {
   MAT_SNACK_BAR_DATA,
@@ -15,10 +14,9 @@ const meta: Meta<NotificationComponent> = {
   component: NotificationComponent,
   decorators: [
     applicationConfig({
-      providers: [provideHttpClient(withFetch())],
+      providers: [provideHttpClient(), storybookTranslateProviders],
     }),
     moduleMetadata({
-      imports: [TranslateModule.forRoot(storybookTranslateConfig)],
       providers: [
         {
           provide: MAT_SNACK_BAR_DATA,

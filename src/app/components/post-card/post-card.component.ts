@@ -1,11 +1,11 @@
-import { Component, input, signal, inject, OnInit } from '@angular/core';
+import { Component, input, signal, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
   Post,
   FavoriteService,
   AuthService,
   NotificationService,
 } from '../../services';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { UnpicImageDirective } from '@unpic/angular';
 import { catchError, tap, take, finalize } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
@@ -14,7 +14,8 @@ import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-post-card',
-  imports: [TranslateModule, UnpicImageDirective],
+  imports: [TranslatePipe, UnpicImageDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './post-card.component.html',
 })
 export class PostCardComponent implements OnInit {

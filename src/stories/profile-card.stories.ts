@@ -1,10 +1,9 @@
-import { Meta, moduleMetadata, type StoryObj } from '@storybook/angular';
+import { Meta, type StoryObj } from '@storybook/angular';
 import { expect, within } from 'storybook/test';
 import { ProfileCardComponent } from '../app/components/profile-card/profile-card.component';
 import { applicationConfig } from '@storybook/angular';
-import { TranslateModule } from '@ngx-translate/core';
-import { storybookTranslateConfig } from '../app/shared';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { storybookTranslateProviders } from '../app/shared';
+import { provideHttpClient } from '@angular/common/http';
 import {
   AuthService,
   User,
@@ -24,7 +23,8 @@ const meta: Meta<ProfileCardComponent> = {
   decorators: [
     applicationConfig({
       providers: [
-        provideHttpClient(withFetch()),
+        provideHttpClient(),
+        storybookTranslateProviders,
         {
           provide: UserService,
           useValue: {
@@ -52,9 +52,6 @@ const meta: Meta<ProfileCardComponent> = {
           },
         },
       ],
-    }),
-    moduleMetadata({
-      imports: [TranslateModule.forRoot(storybookTranslateConfig)],
     }),
   ],
 };

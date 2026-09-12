@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { firstValueFrom } from 'rxjs';
-import { Firestore, doc, getDoc, getDocs, setDoc, updateDoc } from '@angular/fire/firestore';
+import { doc, getDoc, getDocs, setDoc, updateDoc } from 'firebase/firestore';
+import { FIRESTORE } from '../shared/config';
 import { UserService } from './user.service';
 
-vi.mock('@angular/fire/firestore', () => ({
-  Firestore: class {},
+vi.mock('firebase/firestore', () => ({
   collection: vi.fn(() => ({ path: 'mock-collection' })),
   doc: vi.fn(() => ({ id: 'uid1', path: 'mock-doc' })),
   getDocs: vi.fn(),
@@ -37,7 +37,7 @@ describe('UserService', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     TestBed.configureTestingModule({
-      providers: [{ provide: Firestore, useValue: {} }],
+      providers: [{ provide: FIRESTORE, useValue: {} }],
     });
     service = TestBed.inject(UserService);
   });

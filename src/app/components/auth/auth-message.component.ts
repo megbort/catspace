@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { Dialog, DialogType } from '../../shared';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
@@ -13,9 +13,10 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   imports: [
     MatButtonModule,
     MatInputModule,
-    TranslateModule,
+    TranslatePipe,
     CustomDialogComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: ` <app-custom-dialog>
     <div class="flex flex-col gap-4">
       <p class="subtitle-2 p-2">

@@ -1,11 +1,11 @@
 import {
   Component,
   ElementRef,
-  HostListener,
   computed,
   inject,
   signal,
   viewChild,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import {
   FormBuilder,
@@ -18,7 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { CustomDialogComponent } from '../ui/custom-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
@@ -52,11 +52,16 @@ const JPEG_QUALITY = 0.92;
     MatIconModule,
     MatFormFieldModule,
     MatProgressSpinnerModule,
-    TranslateModule,
+    TranslatePipe,
     FormsModule,
     ReactiveFormsModule,
     CustomDialogComponent,
   ],
+  host: {
+    '(window:mousemove)': 'onMouseMove($event)',
+    '(window:mouseup)': 'onMouseUp()',
+  },
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './create-post.component.html',
 })
 export class CreatePostComponent {
@@ -211,7 +216,6 @@ export class CreatePostComponent {
     this.dragOriginY = this.panY();
   }
 
-  @HostListener('window:mousemove', ['$event'])
   protected onMouseMove(event: MouseEvent): void {
     if (!this.isDragging) return;
     this.applyPan(event.clientX, event.clientY);
@@ -222,7 +226,6 @@ export class CreatePostComponent {
     this.applyPan(event.touches[0].clientX, event.touches[0].clientY);
   }
 
-  @HostListener('window:mouseup')
   protected onMouseUp(): void {
     this.isDragging = false;
   }

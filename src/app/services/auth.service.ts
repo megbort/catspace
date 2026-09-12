@@ -1,14 +1,17 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, user } from '@angular/fire/auth';
 import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   updateProfile,
-  UserCredential,
+  type User as FirebaseUser,
+  type UserCredential,
 } from 'firebase/auth';
 import { from, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from './models';
 import { UserService } from './user.service';
+import { FIREBASE_AUTH } from '../shared/config';
 import { toObservable } from '@angular/core/rxjs-interop';
 
 @Injectable({
@@ -17,13 +20,19 @@ import { toObservable } from '@angular/core/rxjs-interop';
 export class AuthService {
   private readonly userService = inject(UserService);
   private readonly router = inject(Router);
-  private readonly firebaseAuth = inject(Auth);
+  private readonly firebaseAuth = inject(FIREBASE_AUTH);
 
   currentUserSignal = signal<User | null | undefined>(undefined);
   currentUser$ = toObservable(this.currentUserSignal);
   isInitialized = signal<boolean>(false);
   isInitialized$ = toObservable(this.isInitialized);
-  user$ = user(this.firebaseAuth);
+  user$ = new Observable<FirebaseUser | null>((subscriber) =>
+    onAuthStateChanged(
+      this.firebaseAuth,
+      (firebaseUser) => subscriber.next(firebaseUser),
+      (error) => subscriber.error(error),
+    ),
+  );
 
   initializeUser(): void {
     this.user$.subscribe({

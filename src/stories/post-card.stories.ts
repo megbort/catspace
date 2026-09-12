@@ -1,9 +1,8 @@
-import { Meta, moduleMetadata, type StoryObj } from '@storybook/angular';
+import { Meta, type StoryObj } from '@storybook/angular';
 import { expect, userEvent, within } from 'storybook/test';
 import { applicationConfig } from '@storybook/angular';
-import { TranslateModule } from '@ngx-translate/core';
-import { storybookTranslateConfig } from '../app/shared';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { storybookTranslateProviders } from '../app/shared';
+import { provideHttpClient } from '@angular/common/http';
 import { PostCardComponent } from '../app/components/post-card/post-card.component';
 import {
   USERS,
@@ -23,7 +22,8 @@ const meta: Meta<PostCardComponent> = {
   decorators: [
     applicationConfig({
       providers: [
-        provideHttpClient(withFetch()),
+        provideHttpClient(),
+        storybookTranslateProviders,
         {
           provide: FavoriteService,
           useValue: {
@@ -53,9 +53,6 @@ const meta: Meta<PostCardComponent> = {
           },
         },
       ],
-    }),
-    moduleMetadata({
-      imports: [TranslateModule.forRoot(storybookTranslateConfig)],
     }),
   ],
 };

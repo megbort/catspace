@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'app-loader',
   imports: [MatProgressSpinnerModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <div
       class="fixed inset-0 flex items-center justify-center bg-black/20 z-[9999] transition-opacity duration-300"

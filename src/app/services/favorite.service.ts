@@ -5,11 +5,11 @@ import {
   collection,
   deleteDoc,
   doc,
-  Firestore,
   getDoc,
   getDocs,
   setDoc,
-} from '@angular/fire/firestore';
+} from 'firebase/firestore';
+import { FIRESTORE } from '../shared/config';
 
 export interface FavoritePost {
   postId: string;
@@ -21,7 +21,7 @@ export interface FavoritePost {
   providedIn: 'root',
 })
 export class FavoriteService {
-  private readonly firestore = inject(Firestore);
+  private readonly firestore = inject(FIRESTORE);
 
   favoritePost(
     userId: string,
